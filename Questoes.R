@@ -1,4 +1,4 @@
-#Questão 1 
+##########Questão 1 
 
 # Letra A - Estado Civil - Gráfico de barras
 barplot(table(Questao1$EstadoCivil), 
@@ -18,18 +18,18 @@ barplot(table(Questao1$RegiaoProcedencia),
 
 # Letra C - Filtro de casados
 library(dplyr)
-NumeroFilho <- (
+NumeroFilhos <- (
   Questao1 %>%
   dplyr::filter(EstadoCivil=="casado") %>%
   dplyr::select(NdeFilhos)
 )
 
 # Letra C - Filhos - Histograma
-hist(NumeroFilho$NdeFilhos, col = "darkblue", xlab = "Número de Filhos", 
+hist(NumeroFilhos$NdeFilhos, col = "darkblue", xlab = "Número de Filhos", 
      ylab = "Frequência", border = "white", main = "Número de Filhos")   
 
 # Letra C - Filhos - Gráfico de dispersão unidimensional 
-stripchart(NumeroFilho$NdeFilhos, method = "stack", offset = 2, at=0, pch=19, 
+stripchart(NumeroFilhos$NdeFilhos, method = "stack", offset = 2, at=0, pch=19, 
            col="darkblue", ylab=NA, xlab = "Número de Filhos", cex=1)  
 
 # Letra D - IDADE - Gráfico de dispersão unidimensional 
@@ -40,4 +40,19 @@ stripchart(Questao1$Anos, method = "stack", offset = 2, at=0, pch=19,
 hist(Questao1$Anos, col = "darkblue", xlab = "Idade", ylab = "Frequência", 
      border = "white", main = "Histograma -  Idade")   
 
+##########Questão 2
+## Média, variância, máximo e mínimo e mediana população
+summary(Questao2$População)
+var(Questao2$População)
 
+
+## Média, variância, máximo e mínimo e mediana população
+summary(Questao2$Densidade)
+var(Questao2$Densidade)
+
+##########Questão 3
+hist(Questao3$TxCrescimentoPopulacao, col = "darkblue", xlab = "Taxa de Crescimento", 
+     ylab = "Frequência", border = "white", main = "Taxa de Crescimento da População",xlim=c(0,10))  
+
+
+help(hist)
