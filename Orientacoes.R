@@ -14,3 +14,8 @@ PDAD_2018_mor2018_31ras %>%
 
 colnames(PDAD_2018_mor2018_31ras)[2] <- "A01ra"
 colnames(PDAD_2018_mor2018_31ras)
+
+
+
+stripchart(Questao1$Anos, method = "stack", offset = 2, at=0, pch=19, col="darkblue", ylab=NA, cex=1.0)  
+stem(Questao1$Anos, scale=.5)
