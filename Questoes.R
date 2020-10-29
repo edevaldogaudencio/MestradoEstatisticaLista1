@@ -15,7 +15,6 @@ barplot(table(Questao1$RegiaoProcedencia),
         main="Gráfico de barras - Região de procedência",
         xlab="Região", ylab="Frequência", )
 
-help(barplot)
 
 # Letra C - Filtro de casados
 library(dplyr)
