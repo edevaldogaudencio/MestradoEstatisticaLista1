@@ -100,3 +100,5 @@ vetor_2 = as.numeric(sub(".*\u2c75", "", Questao4$ClassesAlugueis))
 PontoMedio = (vetor_1 + vetor_2)/2
 DadosRural <- rep(PontoMedio, Questao4$ZonaRural)
 summary(DadosRural)
+
+
