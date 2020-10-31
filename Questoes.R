@@ -26,7 +26,9 @@ NumeroFilhos <- (
 
 # Letra C - Filhos - Histograma
 hist(NumeroFilhos$NdeFilhos, col = "darkblue", xlab = "Número de Filhos", 
-     ylab = "Frequência", border = "white", main = "Número de Filhos")   
+     ylab = "Frequência", border = "white", main = "Histograma - Número de Filhos",
+     breaks=5, ylim=c(0, 10))    
+
 
 # Letra C - Filhos - Gráfico de dispersão unidimensional 
 stripchart(NumeroFilhos$NdeFilhos, method = "stack", offset = 2, at=0, pch=19, 
@@ -42,7 +44,7 @@ hist(Questao1$Anos, col = "darkblue", xlab = "Idade", ylab = "Frequência",
 
 ##########Questão 2
 ## Média, variância, máximo e mínimo e mediana população
-summary(Questao2$População)
+summary2(Questao2$População)
 var(Questao2$População)
 
 
@@ -51,8 +53,50 @@ summary(Questao2$Densidade)
 var(Questao2$Densidade)
 
 ##########Questão 3
-hist(Questao3$TxCrescimentoPopulacao, col = "darkblue", xlab = "Taxa de Crescimento", 
-     ylab = "Frequência", border = "white", main = "Taxa de Crescimento da População",xlim=c(0,10))  
+classes3<-c("0-2","2-4","4-6","6-8","8-10")
+hist(Questao3$TxCrescimentoPopulacao[Questao3$TxCrescimentoPopulacao >= 1 & Questao3$TxCrescimentoPopulacao < 9], 
+     col = "darkblue", xlab = "Taxa de Crescimento", 
+     ylab = "Densidade", border = "white", main = "Taxa de Crescimento da População", prob=T,
+     labels=classes3, breaks=seq(0,10,2), ylim=c(0, 0.25))  
+
+##########Questão 4
+# Letra A - Construa os histogramas das duas distribuições.
+library(FSA)
+library(dplyr)
+##Zona Urbana
+## Selecionando colunas
+Tabela4 <- Questao4 %>% select(ClassesAlugueis, ZonaUrbana) %>% slice(1:5)
+classe4 <- as.numeric(sub("\u2c75.*", "", Tabela4$`ClassesAlugueis`))
+Tabela4$ClassesAlugueis <- classe4
+
+##	Histograma Aluguéis - Zona Urbana
+histFromSum(Tabela4$ClassesAlugueis, Tabela4$ZonaUrbana, col = "darkblue", border = "white",
+            xlim = c(1,16), xlab = "Classe de Aluguéis", main = "Histograma - Aluguéis Zona Urbana",
+            ylab = "Densidade", freq = FALSE, breaks = c(classe4, 15), )
 
 
-help(hist)
+##Zona Rural
+## Selecionando colunas
+Tabela41 <- Questao4 %>% select(ClassesAlugueis, ZonaRural) %>% slice(1:5)
+classe41 <- as.numeric(sub("\u2c75.*", "", Tabela41$`ClassesAlugueis`))
+Tabela41$ClassesAlugueis <- classe41
+
+##	Histograma Aluguéis - Zona Rural
+histFromSum(Tabela41$ClassesAlugueis, Tabela41$ZonaRural, col = "darkblue", border = "white",
+            xlim = c(1,16), xlab = "Classe de Aluguéis", main = "Histograma - Aluguéis Zona Rural",
+            ylab = "Densidade", freq = FALSE, breaks = c(classe41, 15))
+
+# Letra C - Calcule a média, q1, mediana, q3, mínimo e máximo da distribuição
+# Distirbuição Urbana
+vetor_1 = as.numeric(sub("\u2c75.*", "", Questao4$ClassesAlugueis))
+vetor_2 = as.numeric(sub(".*\u2c75", "", Questao4$ClassesAlugueis))
+PontoMedio = (vetor_1 + vetor_2)/2
+DadosUrb <- rep(PontoMedio, Questao4$ZonaUrbana)
+summary(DadosUrb)
+
+# Distirbuição Rural
+vetor_1 = as.numeric(sub("\u2c75.*", "", Questao4$ClassesAlugueis))
+vetor_2 = as.numeric(sub(".*\u2c75", "", Questao4$ClassesAlugueis))
+PontoMedio = (vetor_1 + vetor_2)/2
+DadosRural <- rep(PontoMedio, Questao4$ZonaRural)
+summary(DadosRural)
