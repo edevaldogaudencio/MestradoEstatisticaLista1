@@ -160,4 +160,3 @@ mean(Questao5IPCASubitens$DF, trim = 0.10, na.rm = TRUE)
 mean(Questao5IPCASubitens$NACIONAL, trim = 0.05, na.rm = TRUE)
 mean(Questao5IPCASubitens$NACIONAL, trim = 0.10, na.rm = TRUE)
 
-
