@@ -1,4 +1,5 @@
-##########Questão 1 
+##########Questão 1
+############################################
 
 # Letra A - Estado Civil - Gráfico de barras
 barplot(table(Questao1$EstadoCivil), 
@@ -43,6 +44,7 @@ hist(Questao1$Anos, col = "darkblue", xlab = "Idade", ylab = "Frequência",
      border = "white", main = "Histograma -  Idade")   
 
 ##########Questão 2
+############################################
 ## Média, variância, máximo e mínimo e mediana população
 summary2(Questao2$População)
 var(Questao2$População)
@@ -53,13 +55,16 @@ summary(Questao2$Densidade)
 var(Questao2$Densidade)
 
 ##########Questão 3
+############################################
 classes3<-c("0-2","2-4","4-6","6-8","8-10")
 hist(Questao3$TxCrescimentoPopulacao[Questao3$TxCrescimentoPopulacao >= 1 & Questao3$TxCrescimentoPopulacao < 9], 
      col = "darkblue", xlab = "Taxa de Crescimento", 
      ylab = "Densidade", border = "white", main = "Taxa de Crescimento da População", prob=T,
      labels=classes3, breaks=seq(0,10,2), ylim=c(0, 0.25))  
 
+
 ##########Questão 4
+############################################
 # Letra A - Construa os histogramas das duas distribuições.
 library(FSA)
 library(dplyr)
@@ -101,4 +106,57 @@ PontoMedio = (vetor_1 + vetor_2)/2
 DadosRural <- rep(PontoMedio, Questao4$ZonaRural)
 summary(DadosRural)
 
+##########Questão 5
+############################################
+#Carregar Tabela
+library(readxl)
+Questao5IPCASubitens <- read_excel("Dados/Questao5.xlsx", 
+                                   sheet = "Questão5IPCASubitens", na = "-")
+
+library(readxl)
+Questao5PesosSubitens <- read_excel("Dados/Questao5.xlsx", 
+                                    sheet = "Questão5PesosSubitens", na = "-")
+
+# Letra A - Calcule a 1º. Quartil, mediana, 3º. Quartil, o máximo e mínimo do IPC - subitens
+# para BH, DF e Brasil 
+
+#BH
+Summarize(Questao5IPCASubitens$BH)
+
+#DF
+Summarize(Questao5IPCASubitens$DF)
+
+#Brasil
+Summarize(Questao5IPCASubitens$NACIONAL)
+
+# Letra B - Média ponderada das variações dos subitens pelos pesos dos subitens 
+# BH, DF e Brasil
+#BH
+VetorBH_1 =  Questao5IPCASubitens$BH
+VetorBH_2 = Questao5PesosSubitens$BH
+weighted.mean(VetorBH_1, VetorBH_2, na.rm=TRUE)
+
+#DF 
+VetorDF_1 =  Questao5IPCASubitens$DF
+VetorDF_2 = Questao5PesosSubitens$DF
+weighted.mean(VetorDF_1, VetorDF_2, na.rm=TRUE)
+
+#Brasil
+VetorNAC_1 =  Questao5IPCASubitens$NACIONAL
+VetorNAC_2 = Questao5PesosSubitens$NACIONAL  
+weighted.mean(VetorNAC_1, VetorNAC_2, na.rm=TRUE)
+
+# Letra C - Média aparada de 5% e 10% 
+# BH, DF e Brasil
+# BH
+mean(Questao5IPCASubitens$BH, trim = 0.05, na.rm = TRUE)
+mean(Questao5IPCASubitens$BH, trim = 0.10, na.rm = TRUE)
+
+# DF
+mean(Questao5IPCASubitens$DF, trim = 0.05, na.rm = TRUE)
+mean(Questao5IPCASubitens$DF, trim = 0.10, na.rm = TRUE)
+
+# Brasil
+mean(Questao5IPCASubitens$NACIONAL, trim = 0.05, na.rm = TRUE)
+mean(Questao5IPCASubitens$NACIONAL, trim = 0.10, na.rm = TRUE)
 
