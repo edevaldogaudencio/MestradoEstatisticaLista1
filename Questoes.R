@@ -148,6 +148,27 @@ weighted.mean(VetorNAC_1, VetorNAC_2, na.rm=TRUE)
 
 # Letra C - Média aparada de 5% e 10% 
 # BH, DF e Brasil
+#BH
+VetorBH_1 =  Questao5IPCASubitens$BH
+VetorBH_2 = Questao5PesosSubitens$BH
+VetorBHPonderado <- (VetorBH_1 * VetorBH_2)
+mean(VetorBHPonderado, trim = 0.10, na.rm = TRUE)
+mean(VetorBHPonderado, trim = 0.05, na.rm = TRUE)
+
+
+#DF
+VetorDF_1 =  Questao5IPCASubitens$DF
+VetorDF_2 = Questao5PesosSubitens$DF
+VetorDFPonderado <- (VetorDF_1 * VetorDF_2)
+mean(VetorDFPonderado, trim = 0.10, na.rm = TRUE)
+mean(VetorDFPonderado, trim = 0.05, na.rm = TRUE)
+
+VetorNAC_1 =  Questao5IPCASubitens$NACIONAL
+VetorNAC_2 = Questao5PesosSubitens$NACIONAL  
+VetorNACPonderado <- (VetorNAC_1 * VetorNAC_2)
+mean(VetorNACPonderado, trim = 0.10, na.rm = TRUE)
+mean(VetorNACPonderado, trim = 0.05, na.rm = TRUE)
+
 # BH
 mean(Questao5IPCASubitens$BH, trim = 0.05, na.rm = TRUE)
 mean(Questao5IPCASubitens$BH, trim = 0.10, na.rm = TRUE)
@@ -159,4 +180,7 @@ mean(Questao5IPCASubitens$DF, trim = 0.10, na.rm = TRUE)
 # Brasil
 mean(Questao5IPCASubitens$NACIONAL, trim = 0.05, na.rm = TRUE)
 mean(Questao5IPCASubitens$NACIONAL, trim = 0.10, na.rm = TRUE)
+
+
+
 
