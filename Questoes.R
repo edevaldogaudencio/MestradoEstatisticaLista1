@@ -46,7 +46,7 @@ hist(Questao1$Anos, col = "darkblue", xlab = "Idade", ylab = "Frequência",
 ##########Questão 2
 ############################################
 ## Média, variância, máximo e mínimo e mediana população
-summary2(Questao2$População)
+summary(Questao2$População)
 var(Questao2$População)
 
 
@@ -116,7 +116,7 @@ Questao5IPCASubitens <- read_excel("Dados/Questao5.xlsx",
 library(readxl)
 Questao5PesosSubitens <- read_excel("Dados/Questao5.xlsx", 
                                     sheet = "Questão5PesosSubitens", na = "-")
-
+library(DescTools)
 # Letra A - Calcule a 1º. Quartil, mediana, 3º. Quartil, o máximo e mínimo do IPC - subitens
 # para BH, DF e Brasil 
 
