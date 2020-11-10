@@ -171,6 +171,8 @@ VetorNACPonderado <- (VetorNAC_1 * VetorNAC_2)
 sum(Trim(VetorNACPonderado, trim=0.05, na.rm = TRUE))/100
 sum(Trim(VetorNACPonderado, trim=0.10, na.rm = TRUE))/100
 
+
+#### Média Aparada simples:
 #mean(VetorNACPonderado, trim = 0.10, na.rm = TRUE)
 #mean(VetorNACPonderado, trim = 0.05, na.rm = TRUE)
 
@@ -185,6 +187,8 @@ sum(Trim(VetorNACPonderado, trim=0.10, na.rm = TRUE))/100
 # Brasil
 #mean(Questao5IPCASubitens$NACIONAL, trim = 0.05, na.rm = TRUE)
 #mean(Questao5IPCASubitens$NACIONAL, trim = 0.10, na.rm = TRUE)
+
+
 
 
 
